@@ -13,19 +13,27 @@ const icons = {
 //
 import('@fortawesome/fontawesome-free/js/all');
 var script = {
-  name: 'VueAwesomeIconPicker',
+  name: 'VueIconPicker',
   props: {
     button: {
       type: String,
-      default: 'Pick A Icon'
+      default: 'Pick an Icon'
     },
     title: {
       type: String,
-      default: 'Vue Awesome Icon Picker'
+      default: 'Vue Icon Picker'
     },
     iconPreview: {
       type: Boolean,
       default: true
+    },
+    bgColor: {
+      type: String,
+      default: '#212121'
+    },
+    txtColor: {
+      type: String,
+      default: '#e1e1e1'
     }
   },
 
@@ -113,6 +121,14 @@ var script = {
 
     regularIcons() {
       return this.loading ? [] : this.allIcons.regular;
+    },
+
+    // Custom styling options
+    customStyle() {
+      return {
+        background: this.bgColor,
+        color: this.txtColor
+      };
     }
 
   }
@@ -265,6 +281,7 @@ var __vue_render__ = function () {
     class: _vm.selectedIcon.type + " fa-" + _vm.selectedIcon.name
   })]) : _vm._e(), _vm._v(" "), _c('button', {
     staticClass: "picker-btn",
+    style: _vm.customStyle,
     attrs: {
       "type": "button"
     },
@@ -282,7 +299,7 @@ var __vue_render__ = function () {
     staticClass: "rip-popup"
   }, [_c('header', {
     staticClass: "rip-popup-header"
-  }, [_c('h2', [_vm._v(_vm._s(_vm.title))]), _vm._v(" "), _c('span', {
+  }, [_c('span', {
     on: {
       "click": function ($event) {
         _vm.popUpActive = false;
@@ -301,7 +318,7 @@ var __vue_render__ = function () {
     attrs: {
       "for": "ripSearch"
     }
-  }, [_vm._v("Search for Icon")]), _vm._v(" "), _c('input', {
+  }, [_vm._v("Search Icons")]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -310,7 +327,7 @@ var __vue_render__ = function () {
     }],
     attrs: {
       "id": "ripSearch",
-      "placeholder": "Search for Icon"
+      "placeholder": "Search Icons"
     },
     domProps: {
       "value": _vm.searchText
@@ -324,7 +341,7 @@ var __vue_render__ = function () {
         _vm.searchText = $event.target.value;
       }, _vm.searchTextChanged]
     }
-  }), _vm._v(" "), _vm._m(0)])]), _vm._v(" "), _c('div', {
+  })])]), _vm._v(" "), _c('div', {
     staticClass: "rip-content"
   }, [_c('div', {
     directives: [{
@@ -346,13 +363,13 @@ var __vue_render__ = function () {
     staticClass: "rip-icons"
   }, [_c('h4', {
     staticClass: "icon-title"
-  }, [_vm._v("\n              Regular Icons\n            ")]), _vm._v(" "), _vm.regularIcons.length <= 0 ? _c('p', {
+  }, [_vm._v("Regular Icons")]), _vm._v(" "), _vm.regularIcons.length <= 0 ? _c('p', {
     staticStyle: {
       "text-align": "center"
     }
   }, [_c('i', {
     staticClass: "fas fa-eye-slash"
-  }), _vm._v("\n              Sorry, No icons found!\n            ")]) : _vm._e(), _vm._v(" "), _vm.regularIcons.length > 0 ? _c('ul', {
+  }), _vm._v("\n              Sorry, No icons found!\n\n            ")]) : _vm._e(), _vm._v(" "), _vm.regularIcons.length > 0 ? _c('ul', {
     staticClass: "rip-row"
   }, _vm._l(_vm.regularIcons, function (icon, index) {
     return _c('li', {
@@ -374,13 +391,13 @@ var __vue_render__ = function () {
     }, [_vm._v("\n                    " + _vm._s(icon) + "\n                  ")])])]);
   }), 0) : _vm._e(), _vm._v(" "), _c('h4', {
     staticClass: "icon-title"
-  }, [_vm._v("\n              Brand Icons\n            ")]), _vm._v(" "), _vm.brandIcons.length <= 0 ? _c('p', {
+  }, [_vm._v("Brand Icons")]), _vm._v(" "), _vm.brandIcons.length <= 0 ? _c('p', {
     staticStyle: {
       "text-align": "center"
     }
   }, [_c('i', {
     staticClass: "fas fa-eye-slash"
-  }), _vm._v("\n              Sorry, No Brand icons found!\n            ")]) : _vm._e(), _vm._v(" "), _vm.brandIcons.length > 0 ? _c('ul', {
+  }), _vm._v("\n              Sorry, No Brand icons found!\n\n            ")]) : _vm._e(), _vm._v(" "), _vm.brandIcons.length > 0 ? _c('ul', {
     staticClass: "rip-row"
   }, _vm._l(_vm.brandIcons, function (icon, index) {
     return _c('li', {
@@ -402,7 +419,7 @@ var __vue_render__ = function () {
     }, [_vm._v("\n                    " + _vm._s(icon) + "\n                  ")])])]);
   }), 0) : _vm._e(), _vm._v(" "), _c('h4', {
     staticClass: "icon-title"
-  }, [_vm._v("\n              Solid Icons\n            ")]), _vm._v(" "), _vm.solidIcons.length <= 0 ? _c('p', {
+  }, [_vm._v("Solid Icons")]), _vm._v(" "), _vm.solidIcons.length <= 0 ? _c('p', {
     staticStyle: {
       "text-align": "center"
     }
@@ -431,25 +448,13 @@ var __vue_render__ = function () {
   }), 0) : _vm._e()])])])])])]);
 };
 
-var __vue_staticRenderFns__ = [function () {
-  var _vm = this;
-
-  var _h = _vm.$createElement;
-
-  var _c = _vm._self._c || _h;
-
-  return _c('span', {
-    staticClass: "input-append"
-  }, [_c('i', {
-    staticClass: "fas fa-search"
-  })]);
-}];
+var __vue_staticRenderFns__ = [];
 /* style */
 
 const __vue_inject_styles__ = function (inject) {
   if (!inject) return;
-  inject("data-v-9375201e_0", {
-    source: ".rbt-icon-picker .icon-preview[data-v-9375201e]{font-size:22px;padding:10px 20px 0;display:inline-block}.rbt-icon-picker .picker-btn[data-v-9375201e]{color:#fff;background:#339af0;padding:12px 25px;border:0;border-radius:2px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;cursor:pointer;transition:all .25s ease-in}.rbt-icon-picker .picker-btn[data-v-9375201e]:hover{background:#2c89d6}.rip-popup-component[data-v-9375201e]{text-align:center;z-index:5999999;transition:all .2s;width:100%;height:100%;position:fixed;top:0;left:0;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;opacity:1}.rip-popup-component .rip-popup-bg[data-v-9375201e]{width:100%;background:rgba(0,0,0,.4);position:absolute;top:0;height:100%;z-index:10;transition:all .25s ease;opacity:1;left:0}.rip-popup-component .rip-popup[data-v-9375201e]{transition:all .2s;z-index:100;margin:10px;width:calc(100% - 30px);height:calc(100% - 30px);border-radius:6px;box-shadow:0 5px 20px 0 rgba(0,0,0,.1);background:#f8f9fa;animation:rebound-data-v-9375201e .3s}.rip-popup-component .rip-popup .rip-popup-header[data-v-9375201e]{width:100%;display:flex;align-items:center;justify-content:space-between;background:rgba(0,0,0,.05);border-radius:5px 5px;position:relative}.rip-popup-component .rip-popup .rip-popup-header h2[data-v-9375201e]{transition:all .23s ease .1s;padding:8px 8px 8px 12px;font-size:18px;text-align:center;width:100%}.rip-popup-component .rip-popup .rip-popup-header span[data-v-9375201e]{background:#fff;transition:all .23s ease .1s;position:relative;padding:8px;cursor:pointer;box-shadow:0 5px 20px 0 rgba(0,0,0,.1);border-radius:5px;color:rgba(0,0,0,.6);transform:translate(8px,-8px);line-height:16px;font-size:30px}.rip-popup-component .rip-popup .rip-popup-header span[data-v-9375201e]:hover{box-shadow:0 0 0 0 rgba(0,0,0,.1);transform:translate(5px,-5px)}.rip-popup-component .rip-popup .rip-popup-content[data-v-9375201e]{padding:14px;font-size:14px;transition:all .23s ease .1s;overflow:auto;max-height:calc(100vh - 100px);margin-top:5px;margin-bottom:5px}.rip-popup-component .rip-popup .rip-popup-content .rip-search .rip-input[data-v-9375201e]{display:flex;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;position:relative;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;padding-bottom:20px;border-bottom:1px dashed #e5e5e5;margin-bottom:20px}.rip-popup-component .rip-popup .rip-popup-content .rip-search .rip-input input[data-v-9375201e]{width:100%!important;transition:all .1s ease-in-out;padding:16px 48px 16px 24px;font-size:25px;border:2px solid #dee2e6;box-shadow:inset 0 .25rem .125rem 0 rgba(0,0,0,.05);color:#495057;border-radius:4px}.rip-popup-component .rip-popup .rip-popup-content .rip-search .rip-input input[data-v-9375201e]::placeholder{color:#c9cbcd}.rip-popup-component .rip-popup .rip-popup-content .rip-search .rip-input span[data-v-9375201e]{position:absolute;right:25px;font-size:28px;color:#caccce;opacity:.4}.rip-popup-component .rip-popup .rip-popup-content .rip-content[data-v-9375201e]{width:100%}.rip-popup-component .rip-popup .rip-popup-content .rip-content .rip-not-found[data-v-9375201e]{min-height:75vh;display:flex;align-items:center;align-self:center;align-content:center;min-width:100%;text-align:center}.rip-popup-component .rip-popup .rip-popup-content .rip-content .rip-not-found svg[data-v-9375201e]{margin:0 auto;font-size:50px;color:#adb5bd}.rip-popup-component .rip-popup .rip-popup-content .rip-content h4.icon-title[data-v-9375201e]{font-size:20px;text-transform:uppercase;letter-spacing:.03em;margin-bottom:25px}.rip-popup-component .rip-popup .rip-popup-content .rip-content .rip-row[data-v-9375201e]{width:100%;display:flex;flex-wrap:wrap;margin:0;padding:0}.rip-popup-component .rip-popup .rip-popup-content .rip-content .rip-row .rip-col[data-v-9375201e]{text-align:center;padding:0 0 16px;width:25%;list-style:none}.rip-popup-component .rip-popup .rip-popup-content .rip-content .rip-row .rip-col .icon-content[data-v-9375201e]{border-radius:3px;transition:all .5s cubic-bezier(.165,.84,.44,1);transform:translateZ(0)}.rip-popup-component .rip-popup .rip-popup-content .rip-content .rip-row .rip-col .icon-content .icon-el[data-v-9375201e]{padding:8px;font-size:35px;font-weight:900;color:#495057;cursor:pointer;transition:all;border-top-left-radius:3px;border-top-right-radius:3px}.rip-popup-component .rip-popup .rip-popup-content .rip-content .rip-row .rip-col .icon-content .icon-el[data-v-9375201e]:hover{color:#fff;background:#339af0}.rip-popup-component .rip-popup .rip-popup-content .rip-content .rip-row .rip-col .icon-content .icon-title[data-v-9375201e]{padding:8px 4px;font-size:13px;color:#adb5bd}.rip-popup-component .rip-popup .rip-popup-content .rip-content .rip-row .rip-col .icon-content .icon-title[data-v-9375201e]:hover{color:#495057}.rip-popup-component .rip-popup .rip-popup-content .rip-content .rip-row .rip-col .icon-content[data-v-9375201e]:hover{background:#fff;box-shadow:0 .25rem .125rem 0 rgba(0,0,0,.05)}@media (min-width:576px){.rip-popup-component .rip-popup .rip-popup-content .rip-content .rip-row .rip-col[data-v-9375201e]{width:20%}}@media (min-width:768px){.rip-popup-component .rip-popup .rip-popup-content .rip-content .rip-row .rip-col[data-v-9375201e]{width:16.6667%}}@media (min-width:1200px){.rip-popup-component .rip-popup .rip-popup-content .rip-content .rip-row .rip-col[data-v-9375201e]{width:11.1111%}}@keyframes rebound-data-v-9375201e{0%{-webkit-transform:scale(.9);transform:scale(.9)}50%{-webkit-transform:scale(1.08);transform:scale(1.08)}100%{-webkit-transform:scale(1);transform:scale(1)}}",
+  inject("data-v-8bbf020a_0", {
+    source: ".rbt-icon-picker[data-v-8bbf020a]{font-family:sans-serif}.rbt-icon-picker .icon-preview[data-v-8bbf020a]{font-size:22px;padding:10px 20px 0;display:inline-block}.rbt-icon-picker .picker-btn[data-v-8bbf020a]{padding:12px 25px;border:0;border-radius:2px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;cursor:pointer}.rip-popup-component[data-v-8bbf020a]{text-align:center;z-index:5999999;transition:all .2s;width:100%;height:100%;position:fixed;top:0;left:0;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;opacity:1}.rip-popup-component .rip-popup-bg[data-v-8bbf020a]{width:100%;background:rgba(0,0,0,.4);position:absolute;top:0;height:100%;z-index:10;transition:all .25s ease;opacity:1;left:0}.rip-popup-component .rip-popup[data-v-8bbf020a]{transition:all .2s;z-index:100;margin:10px;width:calc(100% - 30px);height:calc(100% - 30px);border-radius:6px;box-shadow:0 5px 20px 0 rgba(0,0,0,.1);background:#f8f9fa;animation:rebound-data-v-8bbf020a .3s}.rip-popup-component .rip-popup .rip-popup-header[data-v-8bbf020a]{width:100%;display:flex;align-items:center;justify-content:space-between;background:rgba(0,0,0,.05);border-radius:5px 5px;position:relative}.rip-popup-component .rip-popup .rip-popup-header h2[data-v-8bbf020a]{transition:all .23s ease .1s;padding:8px 8px 8px 12px;font-size:18px;text-align:center;width:100%}.rip-popup-component .rip-popup .rip-popup-header span[data-v-8bbf020a]{background:#fff;transition:all .23s ease .1s;position:relative;padding:8px;cursor:pointer;box-shadow:0 5px 20px 0 rgba(0,0,0,.1);border-radius:5px;color:rgba(0,0,0,.6);transform:translate(8px,-8px);line-height:16px;font-size:30px}.rip-popup-component .rip-popup .rip-popup-header span[data-v-8bbf020a]:hover{box-shadow:0 0 0 0 rgba(0,0,0,.1);transform:translate(5px,-5px)}.rip-popup-component .rip-popup .rip-popup-content[data-v-8bbf020a]{padding:14px;font-size:14px;transition:all .23s ease .1s;overflow:auto;max-height:calc(100vh - 100px);margin-top:5px;margin-bottom:5px}.rip-popup-component .rip-popup .rip-popup-content .rip-search .rip-input[data-v-8bbf020a]{display:flex;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;position:relative;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;padding-bottom:20px;border-bottom:1px dashed #e5e5e5;margin-bottom:20px}.rip-popup-component .rip-popup .rip-popup-content .rip-search .rip-input input[data-v-8bbf020a]{width:90%;transition:all .1s ease-in-out;padding:16px 48px 16px 24px;font-size:25px;border:2px solid #dee2e6;box-shadow:inset 0 .25rem .125rem 0 rgba(0,0,0,.05);color:#495057;border-radius:4px}.rip-popup-component .rip-popup .rip-popup-content .rip-search .rip-input input[data-v-8bbf020a]::placeholder{color:#c9cbcd}.rip-popup-component .rip-popup .rip-popup-content .rip-search .rip-input span[data-v-8bbf020a]{position:absolute;right:25px;font-size:28px;color:#caccce;opacity:.4}.rip-popup-component .rip-popup .rip-popup-content .rip-content[data-v-8bbf020a]{width:100%}.rip-popup-component .rip-popup .rip-popup-content .rip-content .rip-not-found[data-v-8bbf020a]{min-height:75vh;display:flex;align-items:center;align-self:center;align-content:center;min-width:100%;text-align:center}.rip-popup-component .rip-popup .rip-popup-content .rip-content .rip-not-found svg[data-v-8bbf020a]{margin:0 auto;font-size:50px;color:#adb5bd}.rip-popup-component .rip-popup .rip-popup-content .rip-content h4.icon-title[data-v-8bbf020a]{font-size:20px;text-transform:uppercase;letter-spacing:.03em;margin-bottom:25px}.rip-popup-component .rip-popup .rip-popup-content .rip-content .rip-row[data-v-8bbf020a]{width:100%;display:flex;flex-wrap:wrap;margin:0;padding:0}.rip-popup-component .rip-popup .rip-popup-content .rip-content .rip-row .rip-col[data-v-8bbf020a]{text-align:center;padding:0 0 16px;width:25%;list-style:none}.rip-popup-component .rip-popup .rip-popup-content .rip-content .rip-row .rip-col .icon-content[data-v-8bbf020a]{border-radius:3px;transition:all .5s cubic-bezier(.165,.84,.44,1);transform:translateZ(0)}.rip-popup-component .rip-popup .rip-popup-content .rip-content .rip-row .rip-col .icon-content .icon-el[data-v-8bbf020a]{padding:8px;font-size:35px;font-weight:900;color:#495057;cursor:pointer;transition:all;border-top-left-radius:3px;border-top-right-radius:3px}.rip-popup-component .rip-popup .rip-popup-content .rip-content .rip-row .rip-col .icon-content .icon-el[data-v-8bbf020a]:hover{color:#fff;background:#339af0}.rip-popup-component .rip-popup .rip-popup-content .rip-content .rip-row .rip-col .icon-content .icon-title[data-v-8bbf020a]{padding:8px 4px;font-size:13px;color:#adb5bd}.rip-popup-component .rip-popup .rip-popup-content .rip-content .rip-row .rip-col .icon-content .icon-title[data-v-8bbf020a]:hover{color:#495057}.rip-popup-component .rip-popup .rip-popup-content .rip-content .rip-row .rip-col .icon-content[data-v-8bbf020a]:hover{background:#fff;box-shadow:0 .25rem .125rem 0 rgba(0,0,0,.05)}@media (min-width:576px){.rip-popup-component .rip-popup .rip-popup-content .rip-content .rip-row .rip-col[data-v-8bbf020a]{width:20%}}@media (min-width:768px){.rip-popup-component .rip-popup .rip-popup-content .rip-content .rip-row .rip-col[data-v-8bbf020a]{width:16.6667%}}@media (min-width:1200px){.rip-popup-component .rip-popup .rip-popup-content .rip-content .rip-row .rip-col[data-v-8bbf020a]{width:11.1111%}}@keyframes rebound-data-v-8bbf020a{0%{-webkit-transform:scale(.9);transform:scale(.9)}50%{-webkit-transform:scale(1.08);transform:scale(1.08)}100%{-webkit-transform:scale(1);transform:scale(1)}}.picker-btn[data-v-8bbf020a]{color:#fff;background:#339af0}",
     map: undefined,
     media: undefined
   });
@@ -457,7 +462,7 @@ const __vue_inject_styles__ = function (inject) {
 /* scoped */
 
 
-const __vue_scope_id__ = "data-v-9375201e";
+const __vue_scope_id__ = "data-v-8bbf020a";
 /* module identifier */
 
 const __vue_module_identifier__ = undefined;
@@ -475,10 +480,10 @@ const __vue_component__ = /*#__PURE__*/normalizeComponent({
 
 // Import vue component
 
-const install = function installVueAwesomeIconPicker(Vue) {
+const install = function installVueIconPicker(Vue) {
   if (install.installed) return;
   install.installed = true;
-  Vue.component('VueAwesomeIconPicker', __vue_component__);
+  Vue.component('VueIconPicker', __vue_component__);
 }; // Create module definition for Vue.use()
 // to be registered via Vue.use() as well as Vue.component()
 
@@ -487,4 +492,4 @@ __vue_component__.install = install; // Export component by default
 // also be used as directives, etc. - eg. import { RollupDemoDirective } from 'rollup-demo';
 // export const RollupDemoDirective = component;
 
-export default __vue_component__;
+export { __vue_component__ as default };
