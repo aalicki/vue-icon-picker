@@ -57,10 +57,10 @@ Usage:
 
 ## Configuration
 
-You can also pass Options as props in the `vue-awesome-icon-picker` component as you can see the example below
+You can also pass Options as props in the `vue-icon-picker` component as you can see the example below
 
 ```html
-<vue-awesome-icon-picker :icon-preview="false" />
+<vue-icon-picker :icon-preview="false" />
 ```
 
 
